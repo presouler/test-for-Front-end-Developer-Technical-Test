@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
+
+</head>
+<body>
+
+
+<div style="margin:auto;background-color: #F6F6F7;width:90%;height:30px">
+<div style="float:left;background-color:#F6F6F7;width:80%;height:30px"></div>
+<div style="text-align:center;font-size:12px;float:left;width:17%;height:30px;"><p id="demo" onclick="HorS()">My Cart<p></div>
+</div>
+
+<div id="shopcart" ><table id="myTable" style="solid 1px black;">
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+
+</table></div>
+
+
+
+<div style="float:left;width:13%;height:600px"></div>
+<div style="padding-top:30px;float:left;width:30%;height:600px"><img src="classic-tee.jpg" alt="classic-tee" height="585" width="390"></div>
+<div style="float:left;width:15%;height:600px"></div>
+
+<div style="padding-top:30px;float:left;width:30%;height:600px">
+<font style="font-size:20px;">Classic Tee</font>
+<div style="margin-bottom:40px;margin-top:30px; border-bottom: 1px solid #F8F8F8;border-top: 1px solid #F8F8F8;height:30px;"><font style="font-weight:bold;">$75.00</font></div>
+<font color="#8D8D8D" size="2">Dolor sit amet, consectetur adipiscing elit. Haec et tu ita posuisti, et verba vestra 
+sunt. Quod autem ratione actum est, id officium appellamus dolor sit amet, 
+consectetur adipiscing elit. Haec et tu ita posuisti, et verba vestra sunt. Quod 
+autem ratione actum est, id officium appellamus
+</font>
+
+<div style="margin-top:40px">
+<font style="font-weight:bold;color:#8D8D8D;">size</font><font color="red">*</font><span style="font-size:16px;font-weight:bold;" id="star-size"></span>
+</div>
+<br>
+<div>
+
+ <div >
+  <input type="radio" name="size" id="s" value="s" onclick=test()><label for="s">S</label>
+  
+  
+  
+  <input type="radio" name="size" id="m" value="m" onclick=test()><label for="m">M</label>
+ 
+	
+  
+  <input type="radio" name="size" id="l" value="l" onclick=test()><label for="l">L</label>
+  
+  <br><br><br>
+  <input class="btn" type="submit" value="ADD TO CART" onclick=onsub()>
+ </div>
+</div>
+
+</div>
+<script>
+var snum=0;
+var mnum=0;
+var lnum=0;
+function HorS() {
+	var x=document.getElementById("shopcart");
+	if (x.style.display==="none"){
+	x.style.display="block";
+	}else{
+	x.style.display="none";
+	}
+	
+	
+}
+function test(){
+	var y =document.getElementById("star-size");
+	var x =document.getElementsByName("size");
+	for(var i=0;i<x.length;i++){
+		if(x[i].checked){
+			y.innerHTML=x[i].value;
+		}
+	}
+
+}
+function onsub(){
+	
+	var temp=0;
+	var x=document.getElementsByName("size");
+	
+	for(var i =0;i<x.length;i++){
+		if(x[i].checked){
+		temp+=1;
+		}
+	}
+	if (temp==0){alert("You forgot to chose size!");}
+	else{
+			for(var i =0;i<x.length;i++){
+				if(x[i].checked){
+				switch (i){
+					case 0:
+						snum+=1;
+						break;
+					case 1:
+						mnum+=1;
+						break;
+					case 2:
+						lnum+=1;
+						break;
+				}
+			}
+		}
+	}
+	var table_s= document.getElementById("myTable").rows[0].cells;
+	if (snum!=0){
+		table_s[0].innerHTML='<img src="classic-tee.jpg" alt="classic-tee" height="90" width="60">';
+		table_s[1].innerHTML='<font size="2">Classic Tee</font></br></br>'+snum+" "+"x"+" "+"<b>$75.00</b>"+"</br></br>"+"Size:"+"S";
+	}
+	
+	var table_m= document.getElementById("myTable").rows[1].cells;
+	if (mnum!=0){
+		table_m[0].innerHTML='<img src="classic-tee.jpg" alt="classic-tee" height="90" width="60">';
+		table_m[1].innerHTML='<font size="2">Classic Tee</font></br></br>'+mnum+" "+"x"+" "+"<b>$75.00</b>"+"</br></br>"+"Size:"+"M";
+	}
+	
+	var table_l= document.getElementById("myTable").rows[2].cells;
+	if (lnum!=0){
+		table_l[0].innerHTML='<img src="classic-tee.jpg" alt="classic-tee" height="90" width="60">';
+		table_l[1].innerHTML='<font size="2">Classic Tee</font></br></br>'+lnum+" "+"x"+" "+"<b>$75.00</b>"+"</br></br>"+"Size:"+"L";
+		
+	}
+}
+
+</script>
+
+</body>
+</html>
